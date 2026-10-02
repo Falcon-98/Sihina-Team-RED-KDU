@@ -216,6 +216,12 @@ html:not(.motion) .share i{transform:none}
 .history li.next b{color:var(--board)}
 .more{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;padding:.3rem .8rem;min-height:36px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--board);font:700 .88rem var(--body);cursor:pointer;transition:border-color .2s,transform .25s var(--ease),box-shadow .25s}
 .more:hover{border-color:var(--board);transform:translateY(-2px);box-shadow:0 6px 16px rgba(29,95,150,.12)}
+.history p{min-width:0}
+.strip{display:flex;gap:.4rem;margin-top:.65rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding-bottom:.35rem;scrollbar-width:thin}
+.strip button{flex:none;position:relative;width:72px;height:72px;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--line);scroll-snap-align:start}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .35s var(--ease)}
+.strip button:hover img{transform:scale(1.08)}
+.strip .cap{left:.25rem;top:.25rem;font-size:.62rem;padding:0 .35rem;color:#fff}
 
 /* Intake story panel */
 #story{color:var(--ink)}
@@ -258,8 +264,8 @@ html:not(.motion) .share i{transform:none}
 
 /* ---------- Gallery ---------- */
 #gallery{background:var(--chalk)}
-.gallery h3{font-size:1.3rem;margin:2.3rem 0 .9rem;display:flex;align-items:baseline;gap:.5rem}
-.gallery h3 small{font-family:var(--body);font-weight:400;font-size:.9rem;color:var(--muted)}
+.gallery h3{font-size:1.3rem;margin:2.3rem 0 .9rem}
+.gallery h3 small{display:block;margin-top:.25rem;font-family:var(--body);font-weight:400;font-size:.9rem;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem}
 @media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:960px){.grid{grid-template-columns:repeat(4,1fr)}}
@@ -448,10 +454,10 @@ footer p{margin:.3rem 0}
     </div>
     <ul class="history">
       <li class="reveal next" style="--d:0"><div class="yr">2026<small>Intake 40</small></div><p><b>Urugala Sri Dharmaloka School</b><span>Classroom complex renovation. This year's project.</span></p></li>
-      <li class="reveal" style="--d:1"><div class="yr">2024<small>Intake 38</small></div><p><b>Illukovita Primary School</b><span>Renovated a three-classroom building and donated 120+ stationery packs.</span><button type="button" class="more" data-intake="38">Story &amp; photos ›</button></p></li>
-      <li class="reveal" style="--d:0"><div class="yr">2023<small>Intake 37</small></div><p><b>Rehabilitation Home for Differently Abled, Ambanpitiya</b><span>Classroom renovation, painting, wiring and essential items for around 40 residents.</span><button type="button" class="more" data-intake="37">Story &amp; photos ›</button></p></li>
-      <li class="reveal" style="--d:1"><div class="yr">2021<small>Intake 36</small></div><p><b>Mahindagama Village</b><span>Water filter system.</span><button type="button" class="more" data-intake="36">Photos ›</button></p></li>
-      <li class="reveal" style="--d:0"><div class="yr">2019<small>Intake 35</small></div><p><b>Hanguranketha Gangapalatha MMV</b><span>Classroom complex donation.</span><button type="button" class="more" data-intake="35">Photos ›</button></p></li>
+      <li class="reveal" style="--d:1"><div class="yr">2024<small>Intake 38</small></div><p><b>Illukovita Primary School</b><span>Renovated a three-classroom building and donated 120+ stationery packs.</span><span class="strip" data-intake="38"></span><button type="button" class="more" data-intake="38">Read the story ›</button></p></li>
+      <li class="reveal" style="--d:0"><div class="yr">2023<small>Intake 37</small></div><p><b>Rehabilitation Home for Differently Abled, Ambanpitiya</b><span>Classroom renovation, painting, wiring and essential items for around 40 residents.</span><span class="strip" data-intake="37"></span><button type="button" class="more" data-intake="37">Read the story ›</button></p></li>
+      <li class="reveal" style="--d:1"><div class="yr">2021<small>Intake 36</small></div><p><b>Mahindagama Village</b><span>Water filter system.</span><span class="strip" data-intake="36"></span></p></li>
+      <li class="reveal" style="--d:0"><div class="yr">2019<small>Intake 35</small></div><p><b>Hanguranketha Gangapalatha MMV</b><span>Classroom complex donation.</span><span class="strip" data-intake="35"></span></p></li>
       <li class="reveal" style="--d:1"><div class="yr">2018<small>Intake 34</small></div><p><b>Mahavila Kanishta Vidyalaya</b><span>Library repair and refurbishment.</span></p></li>
       <li class="reveal" style="--d:0"><div class="yr">2017<small>Intake 33</small></div><p><b>Prince College, Maduragama</b><span>Library repair and refurbishment.</span></p></li>
       <li class="reveal" style="--d:1"><div class="yr">2016<small>Intake 32</small></div><p><b>Sri Sumangala Maha Vidyalaya</b><span>Water filter, sports equipment and library books.</span></p></li>
@@ -502,10 +508,10 @@ footer p{margin:.3rem 0}
     <div class="reveal">
       <p class="kicker">Visual archive</p>
       <h2>Inside the project.</h2>
-      <p class="lede">Photos from SIHINA 2026/2027. Tap any image to enlarge, then swipe to browse.</p>
+      <p class="lede">Photos from SIHINA 2026/2027 and earlier SIHINA projects. Tap any image to enlarge, then swipe to browse.</p>
     </div>
-    <h3>Photos <small id="cPhotos"></small></h3>
-    <div class="grid" id="gPhotos"></div>
+    <p class="note" id="cPhotos"></p>
+    <div id="gGroups"></div>
     <p class="note" id="noPhotos" hidden>Photos coming soon.</p>
     <!-- Proposal pages hidden temporarily: set SHOW_PROPOSAL_PAGES = true in the script to bring them back -->
     <div id="pagesBlock" hidden>
@@ -694,7 +700,14 @@ nav.addEventListener("click", e => { if(e.target.tagName === "A") setMenu(false)
 addEventListener("keydown", e => { if(e.key === "Escape") setMenu(false); });
 
 /* ---------- Gallery ---------- */
-const ALL = [...PHOTOS, ...PAGES];
+/* Every photo on the site, grouped by project */
+const GROUPS = [
+  { title:"SIHINA 2026/27", sub:"Urugala Sri Dharmaloka School", photos:PHOTOS },
+  { title:"Highlights", sub:"Team Rad and past SIHINA moments", photos:seq("hero", 5).map(pic) },
+  ...["38","37","36","35"].map(k => ({ title:INTAKES[k].kicker, sub:INTAKES[k].title, photos:INTAKES[k].photos, caps:INTAKES[k].captions })),
+];
+const GALLERY = GROUPS.flatMap(g => g.photos);
+const ALL = [...GALLERY, ...PAGES];
 function fill(el, list, label, offset, caps=[]){
   el.innerHTML = list.map((p,i) =>
     `<button type="button" class="reveal" style="--d:${i%4}" data-i="${i+offset}" aria-label="Open ${label} ${i+1}">
@@ -710,11 +723,13 @@ function fill(el, list, label, offset, caps=[]){
   });
   el.querySelectorAll(".reveal").forEach(b => io.observe(b));
 }
-fill($("#gPhotos"), PHOTOS, "Project photo", 0);
-fill($("#gPages"), PAGES, "Proposal page", PHOTOS.length);
-$("#cPhotos").textContent = PHOTOS.length ? `(${PHOTOS.length})` : "";
+let off = 0;
+$("#gGroups").innerHTML = GROUPS.map(g => `<h3>${g.title} <small>${g.sub} · ${g.photos.length} photos</small></h3><div class="grid"></div>`).join("");
+$("#gGroups").querySelectorAll(".grid").forEach((el,k) => { const g = GROUPS[k]; fill(el, g.photos, g.sub + " photo", off, g.caps); off += g.photos.length; });
+fill($("#gPages"), PAGES, "Proposal page", GALLERY.length);
+$("#cPhotos").textContent = GALLERY.length ? `${GALLERY.length} photos` : "";
 $("#cPages").textContent = `(${PAGES.length})`;
-$("#noPhotos").hidden = PHOTOS.length > 0;
+$("#noPhotos").hidden = GALLERY.length > 0;
 $("#pagesBlock").hidden = !SHOW_PROPOSAL_PAGES;
 
 /* ---------- Lightbox ---------- */
@@ -752,6 +767,24 @@ document.querySelectorAll(".more[data-intake]").forEach(btn => btn.onclick = () 
   if (story.showModal){ story.showModal(); story.querySelector(".story").scrollTop = 0; document.body.style.overflow = "hidden"; }
 });
 $("#storyClose").onclick = () => story.close();
+
+/* Photo strips under each year in "SIHINA through the years" */
+document.querySelectorAll(".strip[data-intake]").forEach(strip => {
+  const d = INTAKES[strip.dataset.intake]; if(!d) return;
+  strip.setAttribute("role", "list"); strip.setAttribute("aria-label", d.title + " photos");
+  strip.innerHTML = d.photos.map((p,i) =>
+    `<button type="button" role="listitem" data-i="${i}" aria-label="Open ${d.title} photo ${i+1} of ${d.photos.length}">
+       ${d.captions && d.captions[i] ? `<span class="cap">${d.captions[i]}</span>` : ""}<img src="${p.thumb}" data-local="${p.thumbLocal}" alt="" loading="lazy" decoding="async">
+     </button>`).join("");
+  strip.querySelectorAll("img").forEach(img => img.addEventListener("error", () => {
+    if(img.dataset.local){ img.src = img.dataset.local; img.dataset.local = ""; } else img.parentElement.remove();
+  }));
+  strip.addEventListener("click", e => {
+    const b = e.target.closest("button[data-i]"); if(!b) return;
+    LIST = d.photos; show(+b.dataset.i, false);
+    if (lb.showModal){ lb.showModal(); document.body.style.overflow = "hidden"; } else window.open(lbImg.src, "_blank");
+  });
+});
 story.addEventListener("close", () => document.body.style.overflow = "");
 story.addEventListener("click", e => { if(e.target === story) story.close(); });
 $("#lbClose").onclick = () => lb.close();
